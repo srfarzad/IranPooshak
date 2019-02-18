@@ -19,6 +19,16 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+
+    }
+
+
     render() {
         return (
 
@@ -39,7 +49,7 @@ export default class App extends Component<Props> {
 
                         onPress={() => {
 
-                            Alert.alert('Gps', 'Please turn on Gps',  [
+                            Alert.alert('Gps', 'Please turn on Gps', [
                                 {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
                                 {
                                     text: 'Cancel',
@@ -51,41 +61,41 @@ export default class App extends Component<Props> {
 
                         }}
 
-                            > </Button>
+                > </Button>
 
 
-                            </View>
+            </View>
 
-                            );
-                            }
-                }
+        );
+    }
+}
 
-                const styles=StyleSheet.create({
-                container: {
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#F5FCFF',
-            },
-                welcome: {
-                fontSize: 20,
-                textAlign: 'center',
-                margin: 10,
-            },
-                instructions: {
-                textAlign: 'center',
-                color: '#333333',
-                marginBottom: 5,
-            },
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
 
-                buttons: {
+    buttons: {
 
-                width: '100%',
-                height: 40,
-                marginLeft: 10,
-                marginRight: 10,
-                alignSelf: 'stretch',
-            },
+        width: '100%',
+        height: 40,
+        marginLeft: 10,
+        marginRight: 10,
+        alignSelf: 'stretch',
+    },
 
 
-            });
+});

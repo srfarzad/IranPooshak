@@ -8,62 +8,41 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Image,TouchableHighlight,TextInput, Alert} from 'react-native';
-import call from 'react-native-phone-call';
-import { Navigation } from 'react-native-navigation';
-
-
-
-const prompts= {
-    number : '9093900003',
-    prompt : true
-}
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import {WebView} from 'react-native-webview';
 
 type Props = {};
-class Setting extends Component<Props> {
-
-
-    goToScreen = (screenName) => {
-
-        Navigation.showModal({
-            stack: {
-                children: [{
-                    component: {
-                        name: screenName,
-                        options: {
-                            topBar: {
-                                title: {
-                                    text: screenName,
-                                    fontSize: 14,
-                                    color: 'red',
-                                }
-                            }
-                        },
-                    }
-                }]
-            }
-        });
-    }
+class Webview extends Component<Props> {
 
 
     render() {
         return (
+
             <View style={styles.container}>
 
-                <Text>  Setting page</Text>
-                <Button title="Call" onPress={ ()=> call(prompts).catch(console.log('Error')) }  />
 
-                <Button title="visit our website" onPress={()=>  this.goToScreen('Webview')  }  />
 
+                <WebView
+                    source={{uri : "http://google.com"}}
+                />
 
             </View>
+/*
+                <WebView
+                source={{uri : "http://google.com"}}
+                style={{width : "100%" , height : "100%"}}
+                javaScriptEnabled = true
+
+                />*/
+
+
         );
     }
 }
 
 
 
-export default Setting;
+export default Webview;
 
 
 const styles = StyleSheet.create({

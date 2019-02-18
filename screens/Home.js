@@ -23,6 +23,11 @@ const instructions = Platform.select({
 type Props = {};
  class Home extends Component<Props> {
 
+     constructor(props) {
+         super(props)
+             // this.goToHome = this.goToHome.bind(this);
+     }
+
 
 
     goToScreen = (screenName) => {
@@ -58,7 +63,7 @@ type Props = {};
 
                 <TouchableOpacity style={styles.buttons}  onPress={()=> this.goToScreen('SignUp') }>
 
-                    <Text >عضویت در ایران پوشاک</Text>
+                    <Text style={{fontFamily: "irsans" , fontSize: 20}} >عضویت در ایران پوشاک</Text>
 
                 </TouchableOpacity>
 
@@ -66,7 +71,7 @@ type Props = {};
 
                 <TouchableOpacity style={styles.buttons}  onPress={()=> this.goToScreen('SignIn') }>
 
-                    <Text >ورود به ایران پوشاک</Text>
+                    <Text  style={{fontFamily: "irsans" , fontSize: 20}} >ورود به ایران پوشاک</Text>
 
                 </TouchableOpacity>
 

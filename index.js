@@ -10,6 +10,7 @@ import SignUp from './screens/SignUp'
 import Default from './screens/Default'
 import ProductCategory from './screens/ProductCategory'
 import Setting from './screens/Setting'
+import Webview from './screens/Webview'
 
 
 Navigation.registerComponent('Home', () => Home);
@@ -18,6 +19,7 @@ Navigation.registerComponent('SignUp', () => SignUp);
 Navigation.registerComponent('Default', () => Default);
 Navigation.registerComponent('ProductCategory', () => ProductCategory);
 Navigation.registerComponent('Setting', () => Setting);
+Navigation.registerComponent('Webview', () => Webview);
 
 
 Navigation.events().registerAppLaunchedListener(() => {
