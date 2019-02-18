@@ -8,7 +8,7 @@ import Home from './screens/Home'
 import SignIn from './screens/SignIn'
 import SignUp from './screens/SignUp'
 import Default from './screens/Default'
-import Category from './screens/Category'
+import ProductCategory from './screens/ProductCategory'
 import Setting from './screens/Setting'
 
 
@@ -16,27 +16,42 @@ Navigation.registerComponent('Home', () => Home);
 Navigation.registerComponent('SignIn', () => SignIn);
 Navigation.registerComponent('SignUp', () => SignUp);
 Navigation.registerComponent('Default', () => Default);
-Navigation.registerComponent('Category', () => Category);
+Navigation.registerComponent('ProductCategory', () => ProductCategory);
 Navigation.registerComponent('Setting', () => Setting);
 
 
+Navigation.events().registerAppLaunchedListener(() => {
+    Navigation.setRoot({
 
-Navigation.setRoot({
-    root: {
-        stack: {
-            id: 'Home',
-            children: [
-                {
-                    component: {
-                        name: 'Home',
-                        options: {
-                            overlay: {
-                                interceptTouchOutside: true
+        root : {
+
+            stack : {
+                id:'AppStack',
+                children : [
+                    {
+                        component : {
+                            name : 'Home' ,
+                            options : {
+                                topBar : {
+                                    title : {
+                                        text : 'App'
+                                    }, rightButtons : [{
+                                        id : 'SaveId',
+                                        text : 'Save',
+
+
+                                    }],
+
+                                }
+
+
+
                             }
-                        }
+                        },
                     }
-                }
-            ],
+                ]
+            }
         }
-    }
+
+    });
 });

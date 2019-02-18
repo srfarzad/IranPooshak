@@ -10,6 +10,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image, Alert,TouchableOpacity} from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import {goHome, goToAuth} from "./navigationHome";
+import ProductCategory from "./ProductCategory";
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,86 +21,28 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Home extends Component<Props> {
+ class Home extends Component<Props> {
 
 
-    gotoScreen(screenName) {
 
-
-        Navigation.showModal({
-            stack: {
-                children: [{
-                    component : {
-                        name : screenName,
-                    }
-
-                }]
-
-            }
-
-        })
-
-    }
-
-    gotoScreenPush(screenName) {
-
+    goToScreen = (screenName) => {
 
         Navigation.push(this.props.componentId, {
             component: {
-                name: screenName,
-                passProps: {
-                    text: screenName
-                },
-                options: {
-                    topBar: {
-                        title: {
-                            text: screenName
-                        }
-                    },
-                    bottomTabs: {
-                        visible: true,
-                        children: [{
-                            stack: {
-                                children: [{
-                                    component: {
-                                        name: 'Category',
-                                        passProps: {
-                                            text: 'This is tab 1'
-                                        }
-                                    }
-                                }],
-                                options: {
-                                    bottomTab: {
-                                        text: 'Tab 1',
-                                        icon: require('../assets/images/login.png'),
-                                        testID: 'FIRST_TAB_BAR_BUTTON'
-                                    }
-                                }
-                            }
-                        },
-                            {
-                                component: {
-                                    name: 'Category',
-                                    passProps: {
-                                        text: 'This is tab 2'
-                                    },
-                                    options: {
-                                        bottomTab: {
-                                            text: 'Tab 2',
-                                            icon: require('../assets/images/login.png'),
-                                            testID: 'SECOND_TAB_BAR_BUTTON'
-                                        }
-                                    }
-                                }
-                            }]
-                    }//end  botom tabs
-                }//end option
+                name: screenName
             }
-        });
-
+        })
     }
 
+    goToHome = async () => {
 
+        try {
+            // login with provider
+            goToAuth()
+        } catch (err) {
+            console.log('error:', err)
+        }
+    };
 
 
     render() {
@@ -112,7 +56,7 @@ export default class Home extends Component<Props> {
                 />
 
 
-                <TouchableOpacity style={styles.buttons}  onPress={()=> this.gotoScreen('SignUp') }>
+                <TouchableOpacity style={styles.buttons}  onPress={()=> this.goToScreen('SignUp') }>
 
                     <Text >عضویت در ایران پوشاک</Text>
 
@@ -120,14 +64,14 @@ export default class Home extends Component<Props> {
 
 
 
-                <TouchableOpacity style={styles.buttons}  onPress={()=> this.gotoScreen('SignIn') }>
+                <TouchableOpacity style={styles.buttons}  onPress={()=> this.goToScreen('SignIn') }>
 
                     <Text >ورود به ایران پوشاک</Text>
 
                 </TouchableOpacity>
 
 
-                <TouchableOpacity style={styles.buttons} onPress={()=> this.gotoScreenPush('Default') }    >
+                <TouchableOpacity style={styles.buttons} onPress={()=> this.goToHome() }    >
 
                     <Text >ورود مهمان</Text>
 
@@ -140,6 +84,9 @@ export default class Home extends Component<Props> {
         );
     }
 }
+
+export default Home;
+
 
 const styles = StyleSheet.create({
     container: {

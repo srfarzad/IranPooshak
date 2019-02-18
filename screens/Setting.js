@@ -9,6 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image,TouchableHighlight,TextInput, Alert} from 'react-native';
+import ProductCategory from "./ProductCategory";
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,17 +19,22 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Setting extends Component<Props> {
+class Setting extends Component<Props> {
 
 
     render() {
         return (
             <View style={styles.container}>
 
+                <Text>  Setting page</Text>
+
+
             </View>
         );
     }
 }
+export default Setting;
+
 
 const styles = StyleSheet.create({
     container: {

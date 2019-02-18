@@ -9,8 +9,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image,TouchableHighlight,TextInput, Alert} from 'react-native';
+import ProductCategory from "./ProductCategory";
 
-//import {goToAuth} from 'screens/navigationHome';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,18 +20,15 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Default extends Component<Props> {
+ class Default extends Component<Props> {
 
 
-    componentDidMount(){
-
-        //goToAuth()
-
-    }
 
     render() {
         return (
             <View style={styles.container}>
+
+                <Text>  Default page</Text>
 
 
 
@@ -40,12 +37,15 @@ export default class Default extends Component<Props> {
     }
 }
 
+export default Default;
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#DCDCDC',
+        backgroundColor: '#88dc08',
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',

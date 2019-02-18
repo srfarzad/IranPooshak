@@ -18,17 +18,22 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Category extends Component<Props> {
+ class ProductCategory extends Component<Props> {
 
 
     render() {
         return (
             <View style={styles.container}>
 
+                <Text> Category  page</Text>
+
+
             </View>
         );
     }
 }
+export default ProductCategory;
+
 
 const styles = StyleSheet.create({
     container: {
