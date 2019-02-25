@@ -8,8 +8,23 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Image, TouchableHighlight, TextInput, Alert} from 'react-native';
+import {
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Button,
+    ScrollView,
+    Image,
+    TouchableHighlight,
+    TextInput,
+    Alert,
+    FlatList
+} from 'react-native';
+import ImageSlider from 'react-native-image-slider';
+
 import ProductCategory from "./ProductCategory";
+import {Card, CardItem, Body} from 'native-base';
 
 
 const instructions = Platform.select({
@@ -28,6 +43,7 @@ class Default extends Component<Props> {
 
         this.state = {
             application: null,
+            newApplications: null,
         }
 
     }
@@ -46,19 +62,113 @@ class Default extends Component<Props> {
 
     }
 
+
+    getNewProducts() {
+
+        fetch("http://androidsupport.ir/market/getNewApplications.php")
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({newApplications: responseJson});
+                console.log(responseJson)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+    }
+
+
     componentDidMount() {
         this.getBestProducts();
+        this.getNewProducts();
     }
 
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView>
 
-                <Text> Default page</Text>
+                <View style={styles.container}>
 
 
-            </View>
+                    <View style={{height:220}}>
+
+                    <ImageSlider
+                        loopBothSides
+                        autoPlayWithInterval={3000}
+                        images={["https://fecdn.cafebazaar.ir/promos/promo2446_l_fa.webp",
+                            "https://fecdn.cafebazaar.ir/promos/promo2992_l_fa.webp",
+                            "https://fecdn.cafebazaar.ir/promos/promo2620_l_fa.webp"]}
+
+                    />
+
+                    </View>
+
+
+                    <Text style={styles.rightViews}>برترین محصولات </Text>
+
+                    <FlatList
+
+                        horizontal={true}
+                        keyExtractor={(item, index) => index.toString()}
+                        data={this.state.application}
+
+                        renderItem={({item}) =>
+
+                            <Card>
+                                <CardItem>
+
+                                    <Body>
+
+                                    <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
+                                           style={{width: 96, height: 96}}/>
+                                    <Text> {item.title} </Text>
+
+                                    </Body>
+
+                                </CardItem>
+
+                            </Card>
+
+                        }
+
+                    />
+
+
+                    <Text style={styles.rightViews}>جدیدترین محصولات </Text>
+
+
+                    <FlatList
+
+                        horizontal={true}
+                        keyExtractor={(item, index) => index.toString()}
+                        data={this.state.newApplications}
+
+                        renderItem={({item}) =>
+
+                            <Card>
+                                <CardItem>
+
+                                    <Body>
+
+                                    <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
+                                           style={{width: 96, height: 96}}/>
+                                    <Text> {item.title} </Text>
+
+                                    </Body>
+
+                                </CardItem>
+
+                            </Card>
+
+                        }
+
+                    />
+
+
+                </View>
+
+            </ScrollView>
         );
     }
 }
@@ -71,7 +181,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#88dc08',
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',
@@ -110,5 +219,9 @@ const styles = StyleSheet.create({
     },
     loginText: {
         color: 'white',
-    }
+    },
+    rightViews: {
+        fontFamily: 'irsans',
+        marginTop: 10,
+    },
 });
