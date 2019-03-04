@@ -19,10 +19,10 @@ import {
     TouchableHighlight,
     TextInput,
     Alert,
-    FlatList
+    FlatList, TouchableOpacity
 } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
-
+import {Navigation} from 'react-native-navigation';
 import ProductCategory from "./ProductCategory";
 import {Card, CardItem, Body} from 'native-base';
 
@@ -78,6 +78,37 @@ class Default extends Component<Props> {
     }
 
 
+    goToScreen = (screenName, params) => {
+
+
+        Navigation.showModal({
+
+            stack: {
+                children:[ {
+                    component: {
+                        name: screenName,
+                        passProps: {
+                            title: 'Hello',
+                            item: params
+                        },options : {
+                            topBar : {
+                                title :{
+                                    text : params.title,
+                                }
+                            }
+                        }
+                    }
+                }]
+
+
+            }
+
+
+        })
+
+    };
+
+
     componentDidMount() {
         this.getBestProducts();
         this.getNewProducts();
@@ -91,16 +122,16 @@ class Default extends Component<Props> {
                 <View style={styles.container}>
 
 
-                    <View style={{height:220}}>
+                    <View style={{height: 220}}>
 
-                    <ImageSlider
-                        loopBothSides
-                        autoPlayWithInterval={3000}
-                        images={["https://fecdn.cafebazaar.ir/promos/promo2446_l_fa.webp",
-                            "https://fecdn.cafebazaar.ir/promos/promo2992_l_fa.webp",
-                            "https://fecdn.cafebazaar.ir/promos/promo2620_l_fa.webp"]}
+                        <ImageSlider
+                            loopBothSides
+                            autoPlayWithInterval={3000}
+                            images={["https://fecdn.cafebazaar.ir/promos/promo2446_l_fa.webp",
+                                "https://fecdn.cafebazaar.ir/promos/promo2992_l_fa.webp",
+                                "https://fecdn.cafebazaar.ir/promos/promo2620_l_fa.webp"]}
 
-                    />
+                        />
 
                     </View>
 
@@ -115,20 +146,27 @@ class Default extends Component<Props> {
 
                         renderItem={({item}) =>
 
+
                             <Card>
-                                <CardItem>
+
+
+                                <CardItem  button onPress={()=>   this.goToScreen('ProductDescription', item)  }>
 
                                     <Body>
+
 
                                     <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
                                            style={{width: 96, height: 96}}/>
                                     <Text> {item.title} </Text>
 
+
                                     </Body>
 
                                 </CardItem>
 
+
                             </Card>
+
 
                         }
 

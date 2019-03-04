@@ -11,6 +11,7 @@ import Default from './screens/Default'
 import ProductCategory from './screens/ProductCategory'
 import Setting from './screens/Setting'
 import Webview from './screens/Webview'
+import ProductDescription from './screens/ProductDescription'
 
 
 Navigation.registerComponent('Home', () => Home);
@@ -20,6 +21,7 @@ Navigation.registerComponent('Default', () => Default);
 Navigation.registerComponent('ProductCategory', () => ProductCategory);
 Navigation.registerComponent('Setting', () => Setting);
 Navigation.registerComponent('Webview', () => Webview);
+Navigation.registerComponent('ProductDescription', () => ProductDescription);
 
 
 Navigation.events().registerAppLaunchedListener(() => {
