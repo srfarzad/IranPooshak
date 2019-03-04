@@ -3,7 +3,11 @@ package com.iranpooshak;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactnativecommunity.webview.RNCWebViewPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage; // <-- Add this line
+
+import com.oblador.vectoricons.VectorIconsPackage;
 //import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -42,6 +46,9 @@ public class MainApplication extends  NavigationApplication {
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
                 // eg. new VectorIconsPackage()
+                new MainReactPackage(),
+                new RNFirebasePackage(),
+                new RNFirebaseAuthPackage() // <-- Add this line
         );
     }
 

@@ -8,8 +8,28 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image, TouchableHighlight, TextInput, Alert} from 'react-native';
+import {StyleSheet, View, Image, TouchableHighlight, TextInput, Alert} from 'react-native';
+import {
+    Container,
+    Header,
+    Title,
+    Content,
+    Footer,
+    FooterTab,
+    Button,
+    Left,
+    Right,
+    Body,
+    Icon,
+    Text,
+    Card,
+    CardItem,Tabs,Tab
+} from 'native-base';
+import StarRating from 'react-native-star-rating';
 
+
+import DetailTab from './tabs/DetailTab';
+import CommentsTab from './tabs/CommentsTab';
 
 type Props = {};
 export default class ProductDescription extends Component<Props> {
@@ -17,13 +37,66 @@ export default class ProductDescription extends Component<Props> {
 
     render() {
         return (
-            <View style={styles.container}>
+            <Container>
 
-                {
-                    console.log(this.props.item)
-                }
 
-            </View>
+                <Header>
+                    <Left>
+                        <Button transparent>
+                            <Icon name='menu'/>
+                        </Button>
+                    </Left>
+                    <Body>
+                    <Title>{this.props.item.title}</Title>
+                    </Body>
+                    <Right/>
+                </Header>
+
+
+                <Content>
+                    <Card>
+                        <CardItem>
+                            <Body>
+
+                            <Image source={{
+                                uri: "http://androidsupport.ir/market/images/" +
+                                this.props.item.icon
+                            }} style={{width: 144, height: 144}}/>
+
+
+                            <StarRating
+                                disabled={false}
+                                emptyStar={'ios-star-outline'}
+                                fullStar={'ios-star'}
+                                halfStar={'ios-star-half'}
+                                iconSet={'Ionicons'}
+                                maxStars={7}
+                                rating={this.props.item.rate}
+                                fullStarColor={'red'}
+                            />
+
+                            </Body>
+                        </CardItem>
+                    </Card>
+
+
+                    <Tabs>
+                        <Tab heading="Tab1">
+                            <DetailTab />
+                        </Tab>
+                        <Tab heading="Tab2">
+                            <CommentsTab />
+                        </Tab>
+                        <Tab heading="Tab3">
+                            <DetailTab />
+                        </Tab>
+                    </Tabs>
+
+
+                </Content>
+
+
+            </Container>
         );
     }
 }

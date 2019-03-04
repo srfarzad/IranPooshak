@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "145313432805",
+    "firebase_url": "https://iranpooshak-5a773.firebaseio.com",
+    "project_id": "iranpooshak-5a773",
+    "storage_bucket": "iranpooshak-5a773.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145313432805:android:ebe5522d370e2b26",
+        "android_client_info": {
+          "package_name": "com.iranpooshak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145313432805-grul4s93cgpmsdp35mvmje7a1t27efjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPvsSbutvhECO3pjjcUQ2GKdwgxC3-njo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

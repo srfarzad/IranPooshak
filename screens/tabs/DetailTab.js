@@ -1,3 +1,5 @@
+
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -8,29 +10,27 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,WebView} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, Image,TouchableHighlight,TextInput, Alert} from 'react-native';
+
+const instructions = Platform.select({
+    ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+    android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
 type Props = {};
-
-class Webview extends Component<Props> {
+export default class DetailTab extends Component<Props> {
 
 
     render() {
         return (
+            <View style={styles.container}>
 
-
-            <WebView
-                source={{uri: "http://google.com"}}
-            />
-
-
+            </View>
         );
     }
 }
-
-
-export default Webview;
-
 
 const styles = StyleSheet.create({
     container: {
@@ -42,34 +42,34 @@ const styles = StyleSheet.create({
     inputContainer: {
         borderBottomColor: '#F5FCFF',
         backgroundColor: '#FFFFFF',
-        borderRadius: 30,
+        borderRadius:30,
         borderBottomWidth: 1,
-        width: 250,
-        height: 45,
-        marginBottom: 20,
+        width:250,
+        height:45,
+        marginBottom:20,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems:'center'
     },
-    inputs: {
-        height: 45,
-        marginLeft: 16,
+    inputs:{
+        height:45,
+        marginLeft:16,
         borderBottomColor: '#FFFFFF',
-        flex: 1,
+        flex:1,
     },
-    inputIcon: {
-        width: 30,
-        height: 30,
-        marginLeft: 15,
+    inputIcon:{
+        width:30,
+        height:30,
+        marginLeft:15,
         justifyContent: 'center'
     },
     buttonContainer: {
-        height: 45,
+        height:45,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20,
-        width: 250,
-        borderRadius: 30,
+        marginBottom:20,
+        width:250,
+        borderRadius:30,
     },
     loginButton: {
         backgroundColor: "#00b5ec",

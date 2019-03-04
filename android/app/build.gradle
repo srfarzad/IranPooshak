@@ -105,6 +105,16 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+            release {
+
+                    storeFile file('/Users/farzad/Desktop/React')
+                    storePassword '123456789'
+                    keyAlias 'react'
+                    keyPassword '123456789'
+                }
+
+        }
     splits {
         abi {
             reset()
@@ -117,6 +127,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -142,14 +153,17 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-webview')
-
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-firebase')
+    implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')
    // implementation project(':react-native-webview')
      implementation 'com.android.support:design:27.1.0'
+     implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
 }
 
 
@@ -161,3 +175,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'

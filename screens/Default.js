@@ -25,7 +25,7 @@ import ImageSlider from 'react-native-image-slider';
 import {Navigation} from 'react-native-navigation';
 import ProductCategory from "./ProductCategory";
 import {Card, CardItem, Body} from 'native-base';
-
+import firebase from 'react-native-firebase';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -46,7 +46,46 @@ class Default extends Component<Props> {
             newApplications: null,
         }
 
+
+
     }
+
+
+    createUser() {
+        firebase.auth().createUserWithEmailAndPassword("test55_y@gmail.com","Te#oo(*&")
+            .then((user)=> {
+
+                console.log(user);
+
+            })
+            . catch((error)=> {
+                console.log(error);
+        })
+    }
+
+    signIn(){
+        firebase.auth().signInWithEmailAndPassword("test55_y@gmail.com","Te#oo(*&")
+            .then((user)=>{
+
+            })
+            .catch((error)=>{
+
+            })
+    }
+
+    forgotPassword(){
+        firebase.auth().sendPasswordResetEmail("test55_y@gmail.com")
+            .then((user)=>{
+
+            })
+            .catch((error)=>{
+
+            })
+    }
+
+
+
+
 
     getBestProducts() {
 
@@ -92,9 +131,8 @@ class Default extends Component<Props> {
                             item: params
                         },options : {
                             topBar : {
-                                title :{
-                                    text : params.title,
-                                }
+                                    visible: false,
+                                    height: 0,
                             }
                         }
                     }
@@ -112,6 +150,7 @@ class Default extends Component<Props> {
     componentDidMount() {
         this.getBestProducts();
         this.getNewProducts();
+        this.createUser();
     }
 
 
